@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Places} from '../Places';
 
 @Component({
   selector: 'app-app-header',
@@ -12,7 +13,7 @@ export class AppHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   searchText: any;
-  heroes = [
+  heroes:Places[] = [
     {image:"assets/kerala.jpg", name: 'Kerala', days: 5, cost: 85000 , discount: '20%'},
     {image:"assets/chennai.jpg", name: 'Chennai', days: 4, cost: 85000 , discount: '15%'},
     {image:"assets/bangalore.jpg", name: 'Bangalore', days: 5, cost: 95000 , discount: '20%'},
@@ -23,15 +24,15 @@ export class AppHeaderComponent implements OnInit {
 
   ];
   
-  selected:any=[];
-  selectedforCompare:any=[];
-  addToCompare(hero: any){
+  selected:Places[]=[];
+  selectedforCompare:Places[]=[];
+  addToCompare(hero: Places){
     this.checkIfExist(hero) ? this.selected.splice(this.selected.indexOf(hero),1) : this.selected.push(hero);
 
   }
 
 
-  checkIfExist(hero:any){
+  checkIfExist(hero:Places){
     return this.selected.indexOf(hero) > -1;
   }
 
@@ -42,7 +43,6 @@ export class AppHeaderComponent implements OnInit {
     }
     else {
       this.showCompare = true;
-      this.selectedforCompare = this.selected;
       this.selectedforCompare = [...this.selected];
     }
   }
@@ -51,8 +51,8 @@ export class AppHeaderComponent implements OnInit {
   }
 
   sortBasedOnCost(){
-  this.heroes.sort((a:any,b:any)=>{
-    return a.cost - b.cost;
+   this.heroes.sort((a:Places,b:Places) : number => {
+    return a.cost  -  b.cost;
   });
 }
 
