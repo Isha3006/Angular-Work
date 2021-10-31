@@ -1,0 +1,55 @@
+.search-hero{
+    width: 70%;
+}
+.label{
+    font-size: 1.2rem;
+
+}
+h1{
+    font-size: 2.5rem;
+    padding: auto;
+}
+.btn btn-primary{
+    font-size: 1.2rem;
+    position:absolute; 
+    width: 50%;
+
+}
+
+ .comapreModal .main {
+    width: 50%;
+    height: 50%;
+    position: fixed;
+    overflow-x: auto;
+    bottom: 0px;
+    right:0px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+ }
+
+ .comapreModal .main .close {
+     float: right;
+     cursor: pointer;
+ }
+
+@media screen and (max-width:991px) {
+    .search-hero{
+        width: 100%;
+    }
+    .btn btn-primary{
+        font-size: 1.2rem;
+        position:absolute; 
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width:600px) {
+    .heading1 {
+        font-size: 14px !important;
+    }
+
+
+}

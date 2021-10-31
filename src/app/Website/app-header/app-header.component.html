@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+      <div class="search-hero">
+        <label for="search" class="lab"> Search</label>
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442; Start searching">
+    </div>
+    </div>
+  </nav>
+
+
+<div class="container text-center">
+    <h1 class="heading1">Welcome to India Tour </h1>
+</div>
+<div class="container">
+    <div class="row">
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Image</th>
+                    <th>Package Name</th>
+                    <th>No of Days</th>
+                    <th>Cost <i class="fa fa-sort" (click)="sortBasedOnCost()"></i></th>
+                    <th>Discount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hero of heroes | filter:searchText">
+                    <!-- create check box -->
+                    <td><input type="checkbox" name="box" (change)="addToCompare(hero)"></td>
+
+                    <td><img src={{hero.image}} alt="image" width="200px" height="100px"></td>
+                    <td>{{hero.name}}</td>
+                    <td>{{hero.days}}</td>
+                    <td>{{hero.cost}}</td>
+                    <td>{{hero.discount}}</td>
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+    <!-- create button-->
+    <div class="row">
+        <button class="btn btn-primary" (click)="showCompareModal()">Compare</button>
+    </div>
+
+<br>
+<br>
+<div *ngIf="showCompare" class="comapreModal">
+<div class="main">
+    <i class="fa fa-times close" (click)="closeCompareModal()"></i>
+<div style="width:100%;overflow-x:auto">
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr> <b><i>Image </i> </b> 
+            <td *ngFor="let hero of selectedforCompare">
+                <img src={{hero.image}} alt="image" width="200px" height="100px">
+            </td>
+        </tr>
+        <tr> <b><i>Package Name</i></b> 
+            <td *ngFor="let hero of selectedforCompare">{{hero.name}}</td>
+        </tr>
+        <tr> <b><i> No of Days</i></b>
+            <td *ngFor="let hero of selectedforCompare">{{hero.days}}</td>
+        </tr>
+        <tr>   <b><i> Cost</i></b>
+            <td *ngFor="let hero of selectedforCompare">{{hero.cost}}</td>
+        </tr>
+        <tr> <b><i>Discount</i></b>
+            <td *ngFor="let hero of selectedforCompare">{{hero.discount}}</td>
+            </tr>
+    </tbody>
+    </table>
+    </div>
+</div>
+</div>
+</div>
